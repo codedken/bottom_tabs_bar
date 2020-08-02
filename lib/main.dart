@@ -16,10 +16,19 @@ class _MyAppState extends State<MyApp> {
   );
   int _selectedIndex = 0;
 
-  List<Widget> _pages = [
-    Text('First page', style: _textStyle),
-    Text('Second page', style: _textStyle),
-    Text('Third page', style: _textStyle),
+  List<Map<String, Object>> _pages = [
+    {
+      'title': 'First page',
+      'page': Text('First page', style: _textStyle),
+    },
+    {
+      'title': 'Second page',
+      'page': Text('Second page', style: _textStyle),
+    },
+    {
+      'title': 'Third page',
+      'page': Text('Third page', style: _textStyle),
+    },
   ];
 
   void _selectedTab(int index) {
@@ -42,9 +51,9 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('BottomTabs'),
+          title: Text(_pages[_selectedIndex]['title']),
         ),
-        body: Center(child: _pages[_selectedIndex]),
+        body: Center(child: _pages[_selectedIndex]['page']),
         bottomNavigationBar: BottomNavigationBar(
           onTap: _selectedTab,
           currentIndex: _selectedIndex,
